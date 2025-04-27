@@ -1,2 +1,3 @@
 # find-your-lol-champion
-A list of league of legends champion, to help you choose one by gameplay type
+
+A list of league of legends champions, to help you choose one by gameplay type
