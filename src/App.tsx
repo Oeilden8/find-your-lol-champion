@@ -1,4 +1,3 @@
-import React from 'react';
 import MainLayout from './components/MainLayout/MainLayout';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 

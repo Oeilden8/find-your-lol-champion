@@ -1,7 +1,10 @@
 :root {
-  --main-bg-color: #121212;
-  --secondary-bg-color: #282828;
-  --input-color: #474747;
+  --main-bg-color: #091428;
+  --secondary-bg-color: #0a1428;
+  --gold-color: #c89b3c;
+  --dark-gold-color: #785a28;
+  --blue-color: #0ac8b9;
+  --dark-blue-color: #005a82;
   --topBar-height: 60px;
   --hover-opacity: 0.5;
 }
@@ -10,7 +13,6 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100vw;
-  background-color: var(--main-bg-color);
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
