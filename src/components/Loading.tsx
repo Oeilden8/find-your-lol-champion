@@ -1,4 +1,4 @@
-import React from 'react';
+import loading from '../assets/icons/loading-buffer.gif';
 
 function Loading() {
   return (
@@ -11,7 +11,7 @@ function Loading() {
         alignItems: 'center',
       }}
     >
-      Loading
+      <img src={loading} alt='icon indicating loading' width={50} />
     </div>
   );
 }
