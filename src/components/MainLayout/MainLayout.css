@@ -3,6 +3,7 @@
   background: no-repeat top right url('../../assets/images/poro-worlds-league-of-legends.jpg');
   background-size: cover;
   overflow: hidden;
+  background-attachment: fixed;
 }
 
 .mainContainer {
