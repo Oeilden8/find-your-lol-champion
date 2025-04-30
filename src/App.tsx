@@ -1,8 +1,10 @@
-import MainLayout from './components/MainLayout/MainLayout';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { createContext, useEffect, useState } from 'react';
 
 import './i18n';
 import Home from './pages/Home';
+import MainLayout from './components/MainLayout/MainLayout';
+import i18n from './i18n';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,8 +15,28 @@ const router = createBrowserRouter(
   ),
 );
 
+type LanguageContextType = {
+  language: string;
+  setLanguage: (value: string) => void;
+};
+
+export const LanguageContext = createContext<LanguageContextType>({
+  language: navigator.language,
+  setLanguage: () => {},
+});
+
 function App() {
-  return <RouterProvider router={router} />;
+  const [language, setLanguage] = useState<string>(navigator.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      <RouterProvider router={router} />
+    </LanguageContext.Provider>
+  );
 }
 
 export default App;

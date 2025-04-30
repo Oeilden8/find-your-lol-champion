@@ -1,5 +1,8 @@
 {
   "home": {
     "welcome": "Bienvenue"
+  },
+  "error": {
+    "general": "Oups! Quelque chose d'inattendu s'est produit!"
   }
 }
