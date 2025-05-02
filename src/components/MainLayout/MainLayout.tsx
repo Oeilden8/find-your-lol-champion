@@ -3,19 +3,26 @@ import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import './MainLayout.css';
 import { LanguageContext } from '../../App';
+import SelectWithDropdown from '../SelectWithDropdown';
+import FrIcon from '../../assets/icons/languagesIcons_FR.svg?react';
+import EnIcon from '../../assets/icons/languagesIcons_EN.svg?react';
 
 function MainLayout() {
-  const { setLanguage } = useContext(LanguageContext);
+  const { language, setLanguage } = useContext(LanguageContext);
+  const languageIconStyle = { width: 30, fill: 'white' };
   return (
     <div className='mainLayout'>
       <section className='mainContainer'>
-        <button type='button' onClick={() => setLanguage('fr')}>
-          FR
-        </button>
-        <button type='button' onClick={() => setLanguage('en')}>
-          EN
-        </button>
-
+        <SelectWithDropdown
+          dropDownMargin={35}
+          options={[
+            { value: 'fr', label: 'Français' },
+            { value: 'en', label: 'English' },
+          ]}
+          label={language === 'fr' ? <FrIcon {...languageIconStyle} /> : <EnIcon {...languageIconStyle} />}
+          onSelect={(option) => setLanguage(option.value)}
+          style={{ display: 'flex', justifyContent: 'flex-end' }}
+        />
         <Outlet />
       </section>
     </div>

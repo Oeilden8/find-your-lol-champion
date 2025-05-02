@@ -1,5 +1,5 @@
 .mainLayout {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--hextech-black);
   background: no-repeat top right url('../../assets/images/poro-worlds-league-of-legends.jpg');
   background-size: cover;
   overflow: hidden;
