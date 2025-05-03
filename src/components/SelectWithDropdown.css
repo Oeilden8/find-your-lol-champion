@@ -1,0 +1,37 @@
+.dropdownButton {
+  background-color: transparent;
+}
+
+.dropdownContainer {
+  position: absolute;
+  background-color: var(--hextech-black-color);
+  border-radius: 5px;
+  border: 1px solid var(--gold-color);
+  display: flex;
+  flex-direction: column;
+  /* to center dropdown on the button */
+  transform: translate(-25%);
+}
+
+.dropdownOption {
+  background-color: transparent;
+  padding: 5px;
+  color: white;
+  font-family: 'Spiegel';
+  font-size: 14px;
+}
+
+.dropdownOption:hover {
+  opacity: 0.7;
+}
+
+.optionLabel {
+  margin: 0;
+}
+
+.textCut {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+}

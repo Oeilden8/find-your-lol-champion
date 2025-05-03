@@ -13,16 +13,17 @@ function MainLayout() {
   return (
     <div className='mainLayout'>
       <section className='mainContainer'>
-        <SelectWithDropdown
-          dropDownMargin={35}
-          options={[
-            { value: 'fr', label: 'Français' },
-            { value: 'en', label: 'English' },
-          ]}
-          label={language === 'fr' ? <FrIcon {...languageIconStyle} /> : <EnIcon {...languageIconStyle} />}
-          onSelect={(option) => setLanguage(option.value)}
-          style={{ display: 'flex', justifyContent: 'flex-end' }}
-        />
+        <div className='languageButtonContainer'>
+          <SelectWithDropdown
+            dropDownMargin={35}
+            options={[
+              { value: 'fr', label: 'Français' },
+              { value: 'en', label: 'English' },
+            ]}
+            label={language === 'fr' ? <FrIcon {...languageIconStyle} /> : <EnIcon {...languageIconStyle} />}
+            onSelect={(option) => setLanguage(option.value)}
+          />
+        </div>
         <Outlet />
       </section>
     </div>
