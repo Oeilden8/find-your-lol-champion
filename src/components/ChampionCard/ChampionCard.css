@@ -1,0 +1,74 @@
+.card {
+  background-color: black;
+  margin-bottom: 30px;
+}
+
+.championImage {
+  width: 280px;
+}
+
+.championInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.championName {
+  font-family: 'BeaufortHeavy';
+  font-size: 22px;
+  color: var(--gold-color);
+  margin: 0;
+}
+
+.difficulty {
+  width: 60px;
+  height: 70px;
+  text-align: center;
+}
+
+.difficulty p {
+  font-family: 'BeaufortHeavy';
+  font-size: 18px;
+  margin-top: 14px;
+}
+
+.championTypes {
+  display: flex;
+}
+
+.championTypes p {
+  font-family: 'SpiegelItalic';
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 1020px) {
+  .championImage {
+    width: 160px;
+  }
+
+  .championInfoContainer {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+
+  .difficulty {
+    width: 40px;
+    height: 50px;
+  }
+
+  .difficulty p {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+
+  .championTypes p {
+    font-size: 10px;
+  }
+
+  .championName {
+    font-size: 14px;
+  }
+}

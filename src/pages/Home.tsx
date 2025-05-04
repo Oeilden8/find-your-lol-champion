@@ -5,6 +5,7 @@ import { LanguageContext } from '../App';
 import { Champion } from '../types/Champions';
 import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
+import ChampionCard from '../components/ChampionCard/ChampionCard';
 import { languageFormatter } from '../utils/formatter';
 
 function Home() {
@@ -59,7 +60,9 @@ function Home() {
           <p style={{ fontFamily: 'BeaufortHeavy', fontSize: 20 }}>
             {t('home.welcome')} {version}
           </p>
-          <ul>{championsList && championsList.map((champion) => <li key={champion.key}>{champion.name}</li>)}</ul>
+          <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+            {championsList && championsList.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
+          </ul>
         </>
       )}
     </div>

@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import './MainLayout.css';
 import { LanguageContext } from '../../App';
-import SelectWithDropdown from '../SelectWithDropdown';
+import SelectWithDropdown from '../SelectWithDropdown/SelectWithDropdown';
 import FrIcon from '../../assets/icons/languagesIcons_FR.svg?react';
 import EnIcon from '../../assets/icons/languagesIcons_EN.svg?react';
 
