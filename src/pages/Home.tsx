@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import './Home.css';
 import { getChampionsList, getDataDragonVersion } from '../services/dataDragon';
 import { useTranslation } from 'react-i18next';
 import { LanguageContext } from '../App';
@@ -6,13 +7,17 @@ import { Champion } from '../types/Champions';
 import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
 import ChampionCard from '../components/ChampionCard/ChampionCard';
+import SelectWithDropdown, { SelectOption } from '../components/SelectWithDropdown/SelectWithDropdown';
+import { findChampionTypes } from '../utils/functions';
 import { languageFormatter } from '../utils/formatter';
+import { goldColor, hextechBlackColor } from '../utils/colors';
 
 function Home() {
   const [version, setVersion] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [championsList, setChampionsList] = useState<Champion[] | undefined>();
+  const [typeSelected, setTypeSelected] = useState<SelectOption | undefined>();
 
   const { language } = useContext(LanguageContext);
   const { t } = useTranslation();
@@ -49,6 +54,16 @@ function Home() {
     fetchChampions();
   }, [language, version]);
 
+  const championTypes = useMemo(() => championsList && findChampionTypes(championsList), [championsList]);
+
+  const filteredChampionByType = useMemo(
+    () =>
+      championsList && typeSelected
+        ? championsList.filter((champ) => champ.tags.includes(typeSelected.value))
+        : championsList,
+    [championsList, typeSelected],
+  );
+
   return (
     <div>
       {isLoading ? (
@@ -60,8 +75,33 @@ function Home() {
           <p style={{ fontFamily: 'BeaufortHeavy', fontSize: 20 }}>
             {t('home.welcome')} {version}
           </p>
-          <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
-            {championsList && championsList.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
+
+          {championTypes && (
+            <section style={{ display: 'flex' }}>
+              {/* <p>Je choisis mon style de jeu</p> */}
+
+              <SelectWithDropdown
+                options={championTypes}
+                label={'Tous'}
+                dropDownMargin={{ top: '10px', left: '-11px' }}
+                onSelect={(option) => {
+                  option === typeSelected ? setTypeSelected(undefined) : setTypeSelected(option);
+                }}
+                selectedOption={typeSelected}
+                isSelect
+                width={170}
+                style={{
+                  backgroundColor: hextechBlackColor,
+                  border: `1px solid ${goldColor}`,
+                  padding: 10,
+                }}
+              />
+            </section>
+          )}
+
+          <ul className='championList'>
+            {filteredChampionByType &&
+              filteredChampionByType.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
           </ul>
         </>
       )}

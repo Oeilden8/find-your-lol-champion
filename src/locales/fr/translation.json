@@ -4,5 +4,9 @@
   },
   "error": {
     "general": "Oups! Quelque chose d'inattendu s'est produit!"
+  },
+  "types": {
+    "Fighter": "Combattant",
+    "Marksman": "Tireur"
   }
 }

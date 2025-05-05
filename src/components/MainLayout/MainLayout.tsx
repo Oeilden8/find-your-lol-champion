@@ -15,7 +15,7 @@ function MainLayout() {
       <section className='mainContainer'>
         <div className='languageButtonContainer'>
           <SelectWithDropdown
-            dropDownMargin={35}
+            dropDownMargin={{ top: '5px', left: '-50px' }}
             options={[
               { value: 'fr', label: 'Français' },
               { value: 'en', label: 'English' },

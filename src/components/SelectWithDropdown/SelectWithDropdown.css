@@ -1,28 +1,57 @@
 .dropdownButton {
   background-color: transparent;
+  color: var(--gold-color);
+  font-family: 'SpiegelSemiBold';
+  font-size: 16px;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dropdownContainer {
   position: absolute;
   background-color: var(--hextech-black-color);
-  border-radius: 5px;
   border: 1px solid var(--gold-color);
   display: flex;
   flex-direction: column;
-  /* to center dropdown on the button */
-  transform: translate(-25%);
+  width: inherit;
+}
+
+.selectArrow {
+  font-family: 'BeaufortHeavy';
+  color: var(--gold-color);
+  transform: rotate(90deg);
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdownOption {
   background-color: transparent;
-  padding: 5px;
+  padding: 10px;
   color: white;
   font-family: 'Spiegel';
+  font-size: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--dark-gold-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkmark {
+  font-weight: bolder;
+  color: var(--gold-color);
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
 .dropdownOption:hover {
-  opacity: 0.7;
+  background-color: var(--dark-blue-color);
 }
 
 .optionLabel {

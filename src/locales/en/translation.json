@@ -4,5 +4,9 @@
   },
   "error": {
     "general": "Whoops! Something unexpected happened!"
+  },
+  "types": {
+    "Fighter": "Fighter",
+    "Marksman": "Marksman"
   }
 }

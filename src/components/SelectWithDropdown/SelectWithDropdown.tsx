@@ -9,7 +9,7 @@ export interface SelectOption {
 interface SelectProps {
   style?: CSSProperties;
   width?: string | number;
-  dropDownMargin: string | number;
+  dropDownMargin?: { top: string; left: string };
   isSelect?: boolean;
   haveEllipsis?: boolean;
   label: string | JSX.Element;
@@ -41,6 +41,7 @@ function SelectWithDropdown(props: SelectProps) {
   const dropdownButtonStyle = {
     width: props.width ? props.width : 'auto',
     '--hover-opacity': isDropdown ? 1 : 0.7,
+    ...props.style,
   };
 
   return (
@@ -53,18 +54,23 @@ function SelectWithDropdown(props: SelectProps) {
       style={dropdownButtonStyle}
       className='dropdownButton'
     >
-      {props.selectedOption ? props.selectedOption.label : props.label ? props.label : ''}
-      {props.isSelect && <p className='selectArrow'>▼</p>}
+      <div className='labelContainer'>
+        {props.selectedOption ? props.selectedOption.label : props.label ? props.label : ''}
+        {props.isSelect && <p className='selectArrow'>{'< >'}</p>}
+      </div>
 
       {isDropdown && (
-        <div className='dropdownContainer'>
+        <div
+          className='dropdownContainer'
+          style={{
+            marginTop: props.dropDownMargin ? props.dropDownMargin.top : 0,
+            marginLeft: props.dropDownMargin ? props.dropDownMargin.left : 0,
+          }}
+        >
           {props.options.map((option, index) => (
             <button
               type='button'
               className='dropdownOption'
-              style={{
-                width: props.width ? props.width : 'auto',
-              }}
               key={index}
               onClick={() => {
                 props.onSelect(option);
@@ -72,6 +78,7 @@ function SelectWithDropdown(props: SelectProps) {
               }}
             >
               <p className={props.haveEllipsis ? 'textCut' : 'optionLabel'}> {option.label}</p>
+              {props.selectedOption && props.selectedOption === option && <p className='checkmark'>✓</p>}
             </button>
           ))}
         </div>
