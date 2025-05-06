@@ -43,6 +43,7 @@ function SelectWithDropdown(props: SelectProps) {
     width: props.width ? props.width : 'auto',
     '--hover-opacity': isDropdown ? 1 : 0.7,
     ...props.style,
+    zIndex: -20,
   };
 
   return (

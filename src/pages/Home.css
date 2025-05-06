@@ -1,6 +1,94 @@
+h1 {
+  font-family: 'BeaufortBold';
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.infoTitle {
+  font-family: 'BeaufortBold';
+  font-size: 20px;
+  text-align: center;
+  color: var(--gold-color);
+}
+
+.typeInfo {
+  font-family: 'Spiegel';
+  font-size: 16px;
+  text-align: center;
+}
+
+.infoButton {
+  font-family: 'BeaufortBold';
+  font-size: 16px;
+  text-align: center;
+  color: var(--gold-color);
+  background-color: transparent;
+  border: 2px solid var(--gold-color);
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
+}
+
 .championList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.selectContainer {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 20px;
+  margin-top: 40px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.select > p {
+  margin: 0;
+  padding-right: 20px;
+  color: var(--gold-color);
+  font-family: 'SpiegelBold';
+}
+
+.leagueButton {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px 20px 5px 20px;
+  border: 2px solid var(--gold-color);
+  color: var(--clear-gold-color);
+  font-family: 'BeaufortBold';
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, var(--dark-gold-color), #32281e);
+  box-shadow: inset 0px 0px 1px black;
+}
+
+.leagueButton:hover {
+  box-shadow: 0 0 4px 1px var(--clear-gold-color);
+  background: linear-gradient(to bottom, var(--dark-gold-color), var(--gold-color));
+  opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .championList {
+    justify-content: space-around;
+  }
+
+  .selectContainer {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .select {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

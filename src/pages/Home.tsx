@@ -1,8 +1,8 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import './Home.css';
 import { getChampionsList, getDataDragonVersion } from '../services/dataDragon';
-import { useTranslation } from 'react-i18next';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
+import { useTranslation, Trans } from 'react-i18next';
 import { Champion } from '../types/Champions';
 import ErrorMessage from '../components/ErrorMessage';
 import Loading from '../components/Loading';
@@ -11,6 +11,7 @@ import SelectWithDropdown, { SelectOption } from '../components/SelectWithDropdo
 import { findChampionTypes } from '../utils/functions';
 import { languageFormatter } from '../utils/formatter';
 import { goldColor, hextechBlackColor } from '../utils/colors';
+import GeneralModal from '../components/Modals/GeneralModal';
 
 enum OrderOptions {
   NAME_ASC = 'nameAsc',
@@ -26,6 +27,7 @@ function Home() {
   const [version, setVersion] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
   const [championsList, setChampionsList] = useState<Champion[] | undefined>();
   const [typeSelected, setTypeSelected] = useState<SelectOption | undefined>();
   const [orderBy, setOrderBy] = useState<SelectOption>({
@@ -111,44 +113,67 @@ function Home() {
         <ErrorMessage />
       ) : (
         <>
-          <p style={{ fontFamily: 'BeaufortHeavy', fontSize: 20 }}>
-            {t('home.welcome')} {version}
-          </p>
+          <h1>{t('home.title')}</h1>
+
+          {isInfoModalOpen && championTypes && (
+            <GeneralModal setIsOpen={setIsInfoModalOpen}>
+              <p className='infoTitle'>{t('home.game')}</p>
+              {championTypes.map((type, index) => (
+                <p className='typeInfo' key={index}>
+                  <Trans
+                    defaults={'...'}
+                    i18nKey={`home.${type.value}`}
+                    components={{ span: <span style={{ color: goldColor, fontFamily: 'BeaufortBold' }} /> }}
+                  />
+                </p>
+              ))}
+              <button type='button' className='leagueButton' onClick={() => setIsInfoModalOpen(false)}>
+                FERMER
+              </button>
+            </GeneralModal>
+          )}
 
           {championTypes && (
-            <section style={{ display: 'flex', gap: 20 }}>
-              {/* <p>Je choisis mon style de jeu</p> */}
+            <section className='selectContainer'>
+              <div className='select'>
+                <p>{t('home.gameStyle')}</p>
+                <button type='button' className='infoButton' onClick={() => setIsInfoModalOpen(true)}>
+                  i
+                </button>
+                <SelectWithDropdown
+                  options={championTypes}
+                  label={t('home.all')}
+                  onSelect={(option) => {
+                    option === typeSelected ? setTypeSelected(undefined) : setTypeSelected(option);
+                  }}
+                  selectedOption={typeSelected}
+                  isSelect
+                  width={160}
+                  style={{
+                    backgroundColor: hextechBlackColor,
+                    border: `1px solid ${goldColor}`,
+                    padding: 10,
+                  }}
+                />
+              </div>
 
-              <SelectWithDropdown
-                options={championTypes}
-                label={t('home.all')}
-                onSelect={(option) => {
-                  option === typeSelected ? setTypeSelected(undefined) : setTypeSelected(option);
-                }}
-                selectedOption={typeSelected}
-                isSelect
-                width={170}
-                style={{
-                  backgroundColor: hextechBlackColor,
-                  border: `1px solid ${goldColor}`,
-                  padding: 10,
-                }}
-              />
-
-              <SelectWithDropdown
-                options={orderOptions}
-                onSelect={(option) => {
-                  setOrderBy(option);
-                }}
-                selectedOption={orderBy}
-                isSelect
-                width={170}
-                style={{
-                  backgroundColor: hextechBlackColor,
-                  border: `1px solid ${goldColor}`,
-                  padding: 10,
-                }}
-              />
+              <div className='select'>
+                <p>{t('home.orderBy')}</p>
+                <SelectWithDropdown
+                  options={orderOptions}
+                  onSelect={(option) => {
+                    setOrderBy(option);
+                  }}
+                  selectedOption={orderBy}
+                  isSelect
+                  width={160}
+                  style={{
+                    backgroundColor: hextechBlackColor,
+                    border: `1px solid ${goldColor}`,
+                    padding: 10,
+                  }}
+                />
+              </div>
             </section>
           )}
 

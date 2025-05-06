@@ -1,7 +1,16 @@
 {
   "home": {
-    "welcome": "Bienvenue",
-    "all": "Tous"
+    "title": "Trouve ton champion",
+    "gameStyle": "Choisis ton style de jeu",
+    "orderBy": "Trier par",
+    "all": "Tous",
+    "game": "Et toi, à quoi tu joues?",
+    "Fighter": "Tu es plutôt du genre à foncer dans le tas en criant \"Behellaaaa !\", à poser ton cerveau et juste tourbillonner avec tes 2 haches de barbare? Le type <span>Combattant</span> est fait pour toi.",
+    "Support": "A moins que tu sois plutôt du genre altruiste et désinteressé ? Si toi, ta passion, c'est sauver des gens, et que tu n'as pas peur de te sacrifier pour la survie de ton équipe, tu seras le parfait <span>Support</span>. Par contre n'espère pas de la reconnaissance, ça reste League of Legends :D",
+    "Mage": "Au contraire si ce que tu aimes, c'est mettre le feu, et maudire tes ennemis de loin pour les regarder mourir lentement dans d'atroces souffrances en ricanant, tu es un <span>Mage</span>. Mais de grands pouvoirs .... impliquent une grande fragilité. C'est dangereux d'y aller seul !",
+    "Tank": "Si tu cherches à être résistant, avoir plus de points de vie que n'importe qui, et retenir l'équipe ennemie à toi seul : joue un <span>Tank</span>. Vous ne passerez pas!",
+    "Marksman": "Attaquer de loin, oui, mais la magie c'est pas ton truc ? Tes armes de prédilections sont plutôt un arc ou un fusil? Tu pourras faire de gros dégats, mais pour un <span>Tireur</span> aussi, il vaut mieux rester près d'un équipier !",
+    "Assassin": "Un <span>Assassin</span> est si vite arrivé ... Tu veux avoir une grande mobilité, sauter dans tous les sens tout en tuant tes ennemis d'un seul combo? Etre une personne de l'ombre, qui prépare un piège mortel en riant, caché dans un buisson? Attraper le pauvre support ennemi qui était parti, seul, cueillir des champignons en forêt ?"
   },
   "error": {
     "general": "Oups! Quelque chose d'inattendu s'est produit!"
