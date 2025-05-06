@@ -12,15 +12,33 @@ import { findChampionTypes } from '../utils/functions';
 import { languageFormatter } from '../utils/formatter';
 import { goldColor, hextechBlackColor } from '../utils/colors';
 
+enum OrderOptions {
+  NAME_ASC = 'nameAsc',
+  NAME_DESC = 'nameDesc',
+  DIFFICULTY_ASC = 'difficultyAsc',
+  DIFFICULTY_DESC = 'difficultyDesc',
+}
+
 function Home() {
+  const { language } = useContext(LanguageContext);
+  const { t } = useTranslation();
+
   const [version, setVersion] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [championsList, setChampionsList] = useState<Champion[] | undefined>();
   const [typeSelected, setTypeSelected] = useState<SelectOption | undefined>();
+  const [orderBy, setOrderBy] = useState<SelectOption>({
+    value: OrderOptions.NAME_ASC,
+    label: t(`order.${OrderOptions.NAME_ASC}`),
+  });
 
-  const { language } = useContext(LanguageContext);
-  const { t } = useTranslation();
+  const orderOptions = [
+    { value: OrderOptions.NAME_ASC, label: `order.${OrderOptions.NAME_ASC}` },
+    { value: OrderOptions.NAME_DESC, label: `order.${OrderOptions.NAME_DESC}` },
+    { value: OrderOptions.DIFFICULTY_ASC, label: `order.${OrderOptions.DIFFICULTY_ASC}` },
+    { value: OrderOptions.DIFFICULTY_DESC, label: `order.${OrderOptions.DIFFICULTY_DESC}` },
+  ];
 
   useEffect(() => {
     const fetchVersion = () =>
@@ -64,6 +82,27 @@ function Home() {
     [championsList, typeSelected],
   );
 
+  const orderedChampions = useMemo(() => {
+    if (filteredChampionByType) {
+      switch (orderBy.value) {
+        case OrderOptions.NAME_ASC as string:
+          return filteredChampionByType;
+        case OrderOptions.NAME_DESC as string:
+          return Array.from(filteredChampionByType).reverse();
+        case OrderOptions.DIFFICULTY_ASC as string:
+          return Array.from(filteredChampionByType).sort(
+            (champA, champB) => champA.info.difficulty - champB.info.difficulty,
+          );
+        case OrderOptions.DIFFICULTY_DESC as string:
+          return Array.from(filteredChampionByType).sort(
+            (champA, champB) => champB.info.difficulty - champA.info.difficulty,
+          );
+        default:
+          return filteredChampionByType;
+      }
+    }
+  }, [filteredChampionByType, orderBy.value]);
+
   return (
     <div>
       {isLoading ? (
@@ -77,13 +116,12 @@ function Home() {
           </p>
 
           {championTypes && (
-            <section style={{ display: 'flex' }}>
+            <section style={{ display: 'flex', gap: 20 }}>
               {/* <p>Je choisis mon style de jeu</p> */}
 
               <SelectWithDropdown
                 options={championTypes}
-                label={'Tous'}
-                dropDownMargin={{ top: '10px', left: '-11px' }}
+                label={t('home.all')}
                 onSelect={(option) => {
                   option === typeSelected ? setTypeSelected(undefined) : setTypeSelected(option);
                 }}
@@ -96,12 +134,27 @@ function Home() {
                   padding: 10,
                 }}
               />
+
+              <SelectWithDropdown
+                options={orderOptions}
+                onSelect={(option) => {
+                  setOrderBy(option);
+                }}
+                selectedOption={orderBy}
+                isSelect
+                width={170}
+                style={{
+                  backgroundColor: hextechBlackColor,
+                  border: `1px solid ${goldColor}`,
+                  padding: 10,
+                }}
+              />
             </section>
           )}
 
           <ul className='championList'>
-            {filteredChampionByType &&
-              filteredChampionByType.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
+            {orderedChampions &&
+              orderedChampions.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
           </ul>
         </>
       )}

@@ -1,6 +1,7 @@
 {
   "home": {
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "all": "All"
   },
   "error": {
     "general": "Whoops! Something unexpected happened!"
@@ -8,5 +9,11 @@
   "types": {
     "Fighter": "Fighter",
     "Marksman": "Marksman"
+  },
+  "order": {
+    "difficultyAsc": "Difficulty ↑",
+    "difficultyDesc": "Difficulty ↓",
+    "nameAsc": "Name ↑",
+    "nameDesc": "Name ↓"
   }
 }

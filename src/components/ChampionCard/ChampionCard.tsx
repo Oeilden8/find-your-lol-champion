@@ -1,16 +1,21 @@
+import { useState } from 'react';
+import './ChampionCard.css';
+
 import { Champion } from '../../types/Champions';
 import { formatLoadingImageUrl } from '../../utils/formatter';
-import './ChampionCard.css';
 import difficulty_Red from '../../assets/icons/difficultyIcons_Red.png';
 import difficulty_Orange from '../../assets/icons/difficultyIcons_Orange.png';
 import difficulty_Yellow from '../../assets/icons/difficultyIcons_Yellow.png';
 import difficulty_Green from '../../assets/icons/difficultyIcons_Green.png';
+import loading from '../../assets/icons/loading-buffer.gif';
 
 interface ChampionCardProps {
   champion: Champion;
 }
 
 function ChampionCard(props: ChampionCardProps) {
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+
   const handleDifficultyImg = (difficulty: number) => {
     if (difficulty > 7) {
       return difficulty_Red;
@@ -27,7 +32,10 @@ function ChampionCard(props: ChampionCardProps) {
         className='championImage'
         alt={`illustration of ${props.champion.name}`}
         src={formatLoadingImageUrl(props.champion.id, '0')}
+        onLoad={() => setIsImageLoaded(true)}
       />
+      {!isImageLoaded && <img src={loading} alt='icon indicating loading' width={50} />}
+
       <section className='championInfoContainer'>
         <div className='championInfo'>
           <p className='championName'>{props.champion.name}</p>

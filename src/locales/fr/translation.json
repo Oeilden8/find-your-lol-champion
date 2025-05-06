@@ -1,6 +1,7 @@
 {
   "home": {
-    "welcome": "Bienvenue"
+    "welcome": "Bienvenue",
+    "all": "Tous"
   },
   "error": {
     "general": "Oups! Quelque chose d'inattendu s'est produit!"
@@ -8,5 +9,11 @@
   "types": {
     "Fighter": "Combattant",
     "Marksman": "Tireur"
+  },
+  "order": {
+    "difficultyAsc": "Difficulté ↑",
+    "difficultyDesc": "Difficulté ↓",
+    "nameAsc": "Nom ↑",
+    "nameDesc": "Nom ↓"
   }
 }

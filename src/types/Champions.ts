@@ -14,7 +14,7 @@ interface ChampionSpell {
 
 export interface Champion {
   id: string;
-  key: string | number;
+  key: string;
   name: string;
   title: string;
   blurb: string;

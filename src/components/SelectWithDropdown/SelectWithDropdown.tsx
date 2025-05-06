@@ -1,18 +1,18 @@
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 import './SelectWithDropdown.css';
+import { useTranslation } from 'react-i18next';
 
 export interface SelectOption {
   value: string;
-  label: string | JSX.Element;
+  label: string;
 }
 
 interface SelectProps {
   style?: CSSProperties;
   width?: string | number;
-  dropDownMargin?: { top: string; left: string };
   isSelect?: boolean;
   haveEllipsis?: boolean;
-  label: string | JSX.Element;
+  label?: string | JSX.Element;
   options: SelectOption[];
   selectedOption?: SelectOption;
   onSelect: (option: SelectOption) => void;
@@ -20,7 +20,8 @@ interface SelectProps {
 
 function SelectWithDropdown(props: SelectProps) {
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
-  const optionsRef = useRef<HTMLButtonElement>(null);
+  const optionsRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   // to close dropdown if user click outside the box
   useEffect(() => {
@@ -45,28 +46,27 @@ function SelectWithDropdown(props: SelectProps) {
   };
 
   return (
-    <button
-      ref={optionsRef}
-      type='button'
-      onClick={() => {
-        setIsDropdown(!isDropdown);
-      }}
-      style={dropdownButtonStyle}
-      className='dropdownButton'
-    >
-      <div className='labelContainer'>
-        {props.selectedOption ? props.selectedOption.label : props.label ? props.label : ''}
-        {props.isSelect && <p className='selectArrow'>{'< >'}</p>}
-      </div>
+    <div style={{ width: props.width }} ref={optionsRef}>
+      <button
+        type='button'
+        onClick={() => {
+          setIsDropdown(!isDropdown);
+        }}
+        style={dropdownButtonStyle}
+        className='dropdownButton'
+      >
+        <div className='labelContainer'>
+          {props.selectedOption
+            ? t([props.selectedOption.label, props.selectedOption.label])
+            : props.label
+            ? props.label
+            : ''}
+          {props.isSelect && <p className='selectArrow'>{'< >'}</p>}
+        </div>
+      </button>
 
       {isDropdown && (
-        <div
-          className='dropdownContainer'
-          style={{
-            marginTop: props.dropDownMargin ? props.dropDownMargin.top : 0,
-            marginLeft: props.dropDownMargin ? props.dropDownMargin.left : 0,
-          }}
-        >
+        <div className='dropdownContainer'>
           {props.options.map((option, index) => (
             <button
               type='button'
@@ -77,13 +77,13 @@ function SelectWithDropdown(props: SelectProps) {
                 setIsDropdown(false);
               }}
             >
-              <p className={props.haveEllipsis ? 'textCut' : 'optionLabel'}> {option.label}</p>
-              {props.selectedOption && props.selectedOption === option && <p className='checkmark'>✓</p>}
+              <p className={props.haveEllipsis ? 'textCut' : 'optionLabel'}>{t([option.label, option.label])}</p>
+              {props.selectedOption && props.selectedOption.value === option.value && <p className='checkmark'>✓</p>}
             </button>
           ))}
         </div>
       )}
-    </button>
+    </div>
   );
 }
 

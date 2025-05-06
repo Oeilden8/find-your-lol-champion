@@ -15,13 +15,14 @@ function MainLayout() {
       <section className='mainContainer'>
         <div className='languageButtonContainer'>
           <SelectWithDropdown
-            dropDownMargin={{ top: '5px', left: '-50px' }}
             options={[
               { value: 'fr', label: 'Français' },
               { value: 'en', label: 'English' },
             ]}
             label={language === 'fr' ? <FrIcon {...languageIconStyle} /> : <EnIcon {...languageIconStyle} />}
             onSelect={(option) => setLanguage(option.value)}
+            width={80}
+            style={{ display: 'flex', justifyContent: 'flex-end' }}
           />
         </div>
         <Outlet />
