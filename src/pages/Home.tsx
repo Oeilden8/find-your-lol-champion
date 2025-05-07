@@ -128,7 +128,7 @@ function Home() {
                 </p>
               ))}
               <button type='button' className='leagueButton' onClick={() => setIsInfoModalOpen(false)}>
-                FERMER
+                {t('close')}
               </button>
             </GeneralModal>
           )}

@@ -24,5 +24,6 @@
     "difficultyDesc": "Difficulty ↓",
     "nameAsc": "Name ↑",
     "nameDesc": "Name ↓"
-  }
+  },
+  "close": "CLOSE"
 }
