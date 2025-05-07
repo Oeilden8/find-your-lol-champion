@@ -32,7 +32,7 @@ function Home() {
   const [typeSelected, setTypeSelected] = useState<SelectOption | undefined>();
   const [orderBy, setOrderBy] = useState<SelectOption>({
     value: OrderOptions.NAME_ASC,
-    label: t(`order.${OrderOptions.NAME_ASC}`),
+    label: `order.${OrderOptions.NAME_ASC}`,
   });
 
   const orderOptions = [
