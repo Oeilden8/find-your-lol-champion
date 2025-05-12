@@ -40,6 +40,7 @@ function MainLayout() {
             onSelect={(option) => setLanguage(option.value)}
             width={80}
             style={{ display: 'flex', justifyContent: 'flex-end' }}
+            hoverStyle='opacity'
           />
         </div>
         <Outlet />

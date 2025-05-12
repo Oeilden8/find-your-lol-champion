@@ -1,17 +1,18 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import './Home.css';
-import { getChampionsList, getDataDragonVersion } from '../services/dataDragon';
-import { LanguageContext } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
+import { getChampionsList, getDataDragonVersion } from '../../services/dataDragon';
+import { LanguageContext } from '../../context/LanguageContext';
 import { useTranslation, Trans } from 'react-i18next';
-import { Champion } from '../types/Champions';
-import ErrorMessage from '../components/ErrorMessage';
-import Loading from '../components/Loading';
-import ChampionCard from '../components/ChampionCard/ChampionCard';
-import SelectWithDropdown, { SelectOption } from '../components/SelectWithDropdown/SelectWithDropdown';
-import { findChampionTypes } from '../utils/functions';
-import { languageFormatter } from '../utils/formatter';
-import { goldColor, hextechBlackColor } from '../utils/colors';
-import GeneralModal from '../components/Modals/GeneralModal';
+import { Champion } from '../../types/Champions';
+import ErrorMessage from '../../components/ErrorMessage';
+import Loading from '../../components/Loading';
+import ChampionCard from '../../components/ChampionCard/ChampionCard';
+import SelectWithDropdown, { SelectOption } from '../../components/SelectWithDropdown/SelectWithDropdown';
+import { findChampionTypes } from '../../utils/functions';
+import { languageFormatter } from '../../utils/formatter';
+import { goldColor, hextechBlackColor } from '../../utils/colors';
+import GeneralModal from '../../components/Modals/GeneralModal';
 
 enum OrderOptions {
   NAME_ASC = 'nameAsc',
@@ -154,6 +155,7 @@ function Home() {
                     border: `1px solid ${goldColor}`,
                     padding: 10,
                   }}
+                  hoverStyle='gold'
                 />
               </div>
 
@@ -172,6 +174,7 @@ function Home() {
                     border: `1px solid ${goldColor}`,
                     padding: 10,
                   }}
+                  hoverStyle='gold'
                 />
               </div>
             </section>
@@ -179,7 +182,11 @@ function Home() {
 
           <ul className='championList'>
             {orderedChampions &&
-              orderedChampions.map((champion) => <ChampionCard champion={champion} key={champion.key} />)}
+              orderedChampions.map((champion) => (
+                <Link to={`champion/${champion.key}`} key={champion.key} className='championLink'>
+                  <ChampionCard champion={champion} />
+                </Link>
+              ))}
           </ul>
         </>
       )}

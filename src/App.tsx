@@ -2,7 +2,8 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { useEffect, useState } from 'react';
 
 import './i18n';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import Champion from './pages/Champion/Champion';
 import MainLayout from './components/MainLayout/MainLayout';
 import i18n from './i18n';
 import { LanguageContext } from './context/LanguageContext';
@@ -11,7 +12,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/find-your-lol-champion/' element={<MainLayout />}>
       <Route index element={<Home />} />
-      {/* <Route path='/champion' element={<Champion />} /> */}
+      <Route path='/champion/:name' element={<Champion />} />
     </Route>,
   ),
 );

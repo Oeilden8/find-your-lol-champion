@@ -16,6 +16,7 @@ interface SelectProps {
   options: SelectOption[];
   selectedOption?: SelectOption;
   onSelect: (option: SelectOption) => void;
+  hoverStyle: 'opacity' | 'gold';
 }
 
 function SelectWithDropdown(props: SelectProps) {
@@ -41,7 +42,6 @@ function SelectWithDropdown(props: SelectProps) {
 
   const dropdownButtonStyle = {
     width: props.width ? props.width : 'auto',
-    '--hover-opacity': isDropdown ? 1 : 0.7,
     ...props.style,
     zIndex: -20,
   };
@@ -54,7 +54,7 @@ function SelectWithDropdown(props: SelectProps) {
           setIsDropdown(!isDropdown);
         }}
         style={dropdownButtonStyle}
-        className='dropdownButton'
+        className={props.hoverStyle === 'gold' ? 'dropdownButton gold' : 'dropdownButton opacity'}
       >
         <div className='labelContainer'>
           {props.selectedOption

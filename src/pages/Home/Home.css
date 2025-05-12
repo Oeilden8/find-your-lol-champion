@@ -31,6 +31,10 @@ h1 {
   margin-right: 20px;
 }
 
+.infoButton:hover {
+  box-shadow: 0 0 4px 2px var(--gold-color);
+}
+
 .championList {
   display: flex;
   flex-wrap: wrap;
@@ -74,6 +78,15 @@ h1 {
   box-shadow: 0 0 4px 1px var(--clear-gold-color);
   background: linear-gradient(to bottom, var(--dark-gold-color), var(--gold-color));
   opacity: 1;
+}
+
+.championLink {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.championLink:hover {
+  box-shadow: 0 0 4px 2px var(--gold-color);
 }
 
 @media screen and (max-width: 1024px) {
