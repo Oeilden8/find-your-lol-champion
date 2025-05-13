@@ -10,7 +10,6 @@ import Loading from '../../components/Loading';
 import ChampionCard from '../../components/ChampionCard/ChampionCard';
 import SelectWithDropdown, { SelectOption } from '../../components/SelectWithDropdown/SelectWithDropdown';
 import { findChampionTypes } from '../../utils/functions';
-import { languageFormatter } from '../../utils/formatter';
 import { goldColor, hextechBlackColor } from '../../utils/colors';
 import GeneralModal from '../../components/Modals/GeneralModal';
 
@@ -48,7 +47,7 @@ function Home() {
       getDataDragonVersion()
         .then((resp) => setVersion(resp[0]))
         .catch((err) => {
-          console.log(err);
+          console.log('fetch version', err);
           setVersion('15.7.1');
         });
 
@@ -58,7 +57,7 @@ function Home() {
   useEffect(() => {
     const fetchChampions = () => {
       if (version) {
-        getChampionsList(version, languageFormatter(language))
+        getChampionsList(version, language)
           .then((resp) => {
             const values = Object.values(resp.data);
             setChampionsList(values);
@@ -66,7 +65,7 @@ function Home() {
             setIsError(false);
           })
           .catch((err) => {
-            console.log(err);
+            console.log('fetch champions', err);
             setIsError(true);
           });
       }
@@ -183,7 +182,12 @@ function Home() {
           <ul className='championList'>
             {orderedChampions &&
               orderedChampions.map((champion) => (
-                <Link to={`champion/${champion.key}`} key={champion.key} className='championLink'>
+                <Link
+                  to={`champion/${version}/${champion.id}`}
+                  key={champion.key}
+                  className='championLink'
+                  state={version}
+                >
                   <ChampionCard champion={champion} />
                 </Link>
               ))}

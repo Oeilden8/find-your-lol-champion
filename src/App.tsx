@@ -7,14 +7,16 @@ import Champion from './pages/Champion/Champion';
 import MainLayout from './components/MainLayout/MainLayout';
 import i18n from './i18n';
 import { LanguageContext } from './context/LanguageContext';
+import { basename } from 'path';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/find-your-lol-champion/' element={<MainLayout />}>
+    <Route path='/' element={<MainLayout />}>
       <Route index element={<Home />} />
-      <Route path='/champion/:name' element={<Champion />} />
+      <Route path='champion/:version/:id' element={<Champion />} />
     </Route>,
   ),
+  { basename: '/find-your-lol-champion/' },
 );
 
 function App() {

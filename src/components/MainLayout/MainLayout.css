@@ -21,7 +21,23 @@
 
 .languageButtonContainer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.returnButton {
+  display: block;
+  background: no-repeat url('../../assets/icons/ArrowIcon_gold.png');
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  transform: rotate(-90deg);
+}
+
+.returnButton:hover {
+  background: no-repeat url('../../assets/icons/ArrowIcon_light_gold.png');
+  background-size: contain;
+  opacity: 1;
+  filter: drop-shadow(0px 0px 2px var(--gold-color));
 }
 
 @media screen and (max-width: 1280px) {

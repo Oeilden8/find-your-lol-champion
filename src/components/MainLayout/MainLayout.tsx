@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import './MainLayout.css';
 import { LanguageContext } from '../../context/LanguageContext';
 import SelectWithDropdown from '../SelectWithDropdown/SelectWithDropdown';
@@ -9,6 +9,8 @@ import EnIcon from '../../assets/icons/languagesIcons_EN.svg?react';
 import ScrollTopButton from '../ScrollTopButton/ScrollTopButton';
 
 function MainLayout() {
+  const location = useLocation();
+
   const { language, setLanguage } = useContext(LanguageContext);
   const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
   const languageIconStyle = { width: 30, fill: 'white' };
@@ -31,6 +33,7 @@ function MainLayout() {
         {showScrollButton && <ScrollTopButton />}
 
         <div className='languageButtonContainer'>
+          <div style={{ width: 80 }}>{location.pathname !== '/' && <Link to='/' className='returnButton' />}</div>
           <SelectWithDropdown
             options={[
               { value: 'fr', label: 'Français' },
