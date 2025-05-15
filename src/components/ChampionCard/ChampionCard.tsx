@@ -56,6 +56,7 @@ function ChampionCard(props: ChampionCardProps) {
             backgroundSize: 'contain',
           }}
           className='difficulty'
+          title='difficulty level icon'
         >
           <p>{props.champion.info.difficulty}</p>
         </div>

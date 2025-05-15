@@ -66,6 +66,7 @@ function Home() {
           })
           .catch((err) => {
             console.log('fetch champions', err);
+            setIsLoading(false);
             setIsError(true);
           });
       }
