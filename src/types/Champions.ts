@@ -4,7 +4,7 @@ interface ChampionImage {
   group?: string;
 }
 
-interface ChampionSpell {
+export interface ChampionSpell {
   id?: string;
   name: string;
   description: string;

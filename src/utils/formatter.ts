@@ -13,11 +13,11 @@ export const formatSquareImageUrl = (championName: string, version: string) => {
 };
 
 export const formatPassiveImageUrl = (championName: string, version: string) => {
-  return `${dataDragonBaseUrl}/${version}/img/passive/${championName}.png`;
+  return `${dataDragonBaseUrl}/${version}/img/passive/${championName}`;
 };
 
 export const formatSpellImageUrl = (spellName: string, version: string) => {
-  return `${dataDragonBaseUrl}/${version}/img/spell/${spellName}.png`;
+  return `${dataDragonBaseUrl}/${version}/img/spell/${spellName}`;
 };
 
 export const languageFormatter = (language: string) => {

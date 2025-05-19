@@ -20,6 +20,8 @@ h3 {
 .coverContainer {
   border: 1px solid var(--gold-color);
   margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .championNameCard {
@@ -54,6 +56,67 @@ h3 {
   background: radial-gradient(circle at 100%, rgba(0, 0, 0, 0) 50%, rgba(9, 20, 40, 1) 100%);
 }
 
+.championStats {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.spellsContainer {
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  justify-content: space-around;
+  width: 450px;
+}
+
+.spellSeparator {
+  height: 62px;
+  width: 2px;
+  background-color: var(--gold-color);
+}
+
+.spellButton {
+  padding: 0;
+  display: flex;
+}
+
+.spellButton:hover {
+  box-shadow: 0 0 1px 2px var(--gold-color);
+}
+
+.spellButtonSelected {
+  border: 1px solid var(--gold-color);
+}
+
+.general {
+  width: 60px;
+  height: 60px;
+}
+
+.passive {
+  width: 50px;
+  height: 50px;
+}
+
+.descriptionContainer {
+  width: 450px;
+}
+
+.spellInfo {
+  font-family: 'Spiegel';
+  color: var(--gold-color);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.descriptionSeparator {
+  height: 1px;
+  background-color: var(--dark-gold-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 @media screen and (max-width: 1024px) {
   h2 {
     font-size: 18px;
@@ -69,6 +132,16 @@ h3 {
 }
 
 @media screen and (max-width: 480px) {
+  .coverContainer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .championStats {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   h2 {
     font-size: 13px;
     letter-spacing: 1px;
@@ -87,5 +160,38 @@ h3 {
 
   .championCover {
     width: 95%;
+  }
+
+  .spellsContainer {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .descriptionContainer {
+    width: 100%;
+  }
+
+  .general {
+    width: 45px;
+    height: 45px;
+  }
+
+  .passive {
+    width: 40px;
+    height: 40px;
+  }
+
+  .spellSeparator {
+    height: 50px;
+  }
+
+  .descriptionSeparator {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .spellInfo {
+    font-size: 13px;
+    line-height: 20px;
   }
 }
