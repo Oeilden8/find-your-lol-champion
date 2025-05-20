@@ -58,13 +58,15 @@ h3 {
 
 .championStats {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 50px;
 }
 
 .spellsContainer {
   display: flex;
-  margin-top: 50px;
   align-items: center;
   justify-content: space-around;
   width: 450px;
@@ -101,6 +103,7 @@ h3 {
 
 .descriptionContainer {
   width: 450px;
+  margin-bottom: 30px;
 }
 
 .spellInfo {
@@ -115,6 +118,55 @@ h3 {
   background-color: var(--dark-gold-color);
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.globalSeparator {
+  height: 2px;
+  background-color: var(--gold-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.loreContainer {
+  width: 450px;
+}
+
+.tips {
+  margin-top: 20px;
+  list-style: inside;
+}
+
+.tips li {
+  margin-bottom: 5px;
+}
+
+.guideLinksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.guideLink {
+  padding: 5px 30px 5px 30px;
+  border: 2px solid var(--gold-color);
+  color: var(--clear-gold-color);
+  font-family: 'BeaufortBold';
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, var(--dark-gold-color), #32281e);
+  box-shadow: inset 0px 0px 1px black;
+}
+
+.guideLink:hover {
+  box-shadow: 0 0 4px 1px var(--clear-gold-color);
+  background: linear-gradient(to bottom, var(--dark-gold-color), var(--gold-color));
+  opacity: 1;
 }
 
 @media screen and (max-width: 1024px) {
@@ -135,6 +187,7 @@ h3 {
   .coverContainer {
     margin-left: 0;
     margin-right: 0;
+    margin-top: 30px;
   }
 
   .championStats {
@@ -164,10 +217,13 @@ h3 {
 
   .spellsContainer {
     width: 100%;
-    margin-top: 30px;
   }
 
   .descriptionContainer {
+    width: 100%;
+  }
+
+  .loreContainer {
     width: 100%;
   }
 

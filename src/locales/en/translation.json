@@ -12,6 +12,12 @@
     "Marksman": "Attacking from a distance, yes, but magic isn't your thing? Are your weapons of choice a bow or a rifle? You could do some serious damage, but for a <span>Marksman</span> too, it's better to stay close to teammates !",
     "Assassin": "An <span>Assassin</span> is so quick to strike ... Do you want to have great mobility, jumping around and killing enemies with a single combo? Watching from the shadows, setting a death trap while laughing, hiding in a bush? To catch the poor enemy support who's gone off alone to pick mushrooms in the forest?"
   },
+  "champion": {
+    "history": "History",
+    "ally": "Play with",
+    "enemy": "Play against",
+    "guideLink": "View a guide"
+  },
   "error": {
     "general": "Whoops! Something unexpected happened!"
   },

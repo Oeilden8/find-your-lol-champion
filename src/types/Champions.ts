@@ -26,6 +26,9 @@ export interface Champion {
 
 export interface ChampionDetails extends Champion {
   skins: { id: string; num: number; name: string; chromas: boolean }[];
+  lore: string;
   spells: ChampionSpell[];
   passive: ChampionSpell;
+  allytips: string[];
+  enemytips: string[];
 }

@@ -12,6 +12,12 @@
     "Marksman": "Attaquer de loin, oui, mais la magie c'est pas ton truc ? Tes armes de prédilections sont plutôt un arc ou un fusil? Tu pourras faire de gros dégats, mais pour un <span>Tireur</span> aussi, il vaut mieux rester près d'un équipier !",
     "Assassin": "Un <span>Assassin</span> est si vite arrivé ... Tu veux avoir une grande mobilité, sauter dans tous les sens tout en tuant tes ennemis d'un seul combo? Etre une personne de l'ombre, qui prépare un piège mortel en riant, caché dans un buisson? Attraper le pauvre support ennemi qui était parti, seul, cueillir des champignons en forêt ?"
   },
+  "champion": {
+    "history": "Histoire",
+    "ally": "Jouer avec",
+    "enemy": "Jouer contre",
+    "guideLink": "Consulter un guide"
+  },
   "error": {
     "general": "Oups! Quelque chose d'inattendu s'est produit!"
   },
