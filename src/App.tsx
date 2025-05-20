@@ -7,7 +7,6 @@ import Champion from './pages/Champion/Champion';
 import MainLayout from './components/MainLayout/MainLayout';
 import i18n from './i18n';
 import { LanguageContext } from './context/LanguageContext';
-import { basename } from 'path';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

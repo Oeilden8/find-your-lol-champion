@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -94,7 +94,7 @@ function Champion() {
                     key={index}
                     className='spellButton general'
                     type='button'
-                    onClick={() => setSpellSelected(spell)}
+                    onClick={() => setSpellSelected({ ...spell, description: spell.description.replace(/<br>/g, ' ') })}
                     style={spellSelected?.name === spell.name ? { border: `2px solid ${goldColor}` } : undefined}
                   >
                     <img
