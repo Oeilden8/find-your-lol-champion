@@ -120,34 +120,35 @@ function Champion() {
             </article>
           </section>
 
-          <div className='globalSeparator' />
-
-          <section className='championStats'>
-            <article className='descriptionContainer'>
-              <h2 style={{ color: 'green' }}>
-                {t('champion.ally')} {champion.name}
-              </h2>
-              <ul className='tips'>
-                {champion.allytips.map((tip, index) => (
-                  <li className='spellInfo' key={index}>
-                    {tip}
-                  </li>
-                ))}
-              </ul>
-            </article>
-            <article className='descriptionContainer'>
-              <h2 style={{ color: 'red' }}>
-                {t('champion.enemy')} {champion.name}
-              </h2>
-              <ul className='tips'>
-                {champion.enemytips.map((tip, index) => (
-                  <li className='spellInfo' key={index}>
-                    {tip}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </section>
+          {champion.allytips.length > 0 && champion.enemytips.length > 0 && <div className='globalSeparator' />}
+          {champion.allytips.length > 0 && champion.enemytips.length > 0 && (
+            <section className='championStats'>
+              <article className='descriptionContainer'>
+                <h2 style={{ color: 'green' }}>
+                  {t('champion.ally')} {champion.name}
+                </h2>
+                <ul className='tips'>
+                  {champion.allytips.map((tip, index) => (
+                    <li className='spellInfo' key={index}>
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+              <article className='descriptionContainer'>
+                <h2 style={{ color: 'red' }}>
+                  {t('champion.enemy')} {champion.name}
+                </h2>
+                <ul className='tips'>
+                  {champion.enemytips.map((tip, index) => (
+                    <li className='spellInfo' key={index}>
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </section>
+          )}
 
           <div className='globalSeparator' />
 
