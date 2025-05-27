@@ -44,7 +44,7 @@ h1 {
 .selectContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-top: 40px;
 }
 
@@ -87,6 +87,14 @@ h1 {
 
 .championLink:hover {
   box-shadow: 0 0 4px 2px var(--gold-color);
+}
+
+.noResult {
+  width: 100%;
+  text-align: center;
+  color: var(--gold-color);
+  font-family: 'SpiegelBold';
+  margin-top: 50px;
 }
 
 @media screen and (max-width: 1024px) {

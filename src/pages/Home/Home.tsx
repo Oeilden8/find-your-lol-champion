@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useMemo, useState } from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import { getChampionsList, getDataDragonVersion } from '../../services/dataDragon';
@@ -9,9 +9,11 @@ import ErrorMessage from '../../components/ErrorMessage';
 import Loading from '../../components/Loading';
 import ChampionCard from '../../components/ChampionCard/ChampionCard';
 import SelectWithDropdown, { SelectOption } from '../../components/SelectWithDropdown/SelectWithDropdown';
+import GeneralModal from '../../components/Modals/GeneralModal';
+import MainInput from '../../components/MainInput/MainInput';
+import poro from '../../assets/images/sadPoro.png';
 import { findChampionTypes } from '../../utils/functions';
 import { goldColor, hextechBlackColor } from '../../utils/colors';
-import GeneralModal from '../../components/Modals/GeneralModal';
 
 enum OrderOptions {
   NAME_ASC = 'nameAsc',
@@ -30,6 +32,7 @@ function Home() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
   const [championsList, setChampionsList] = useState<Champion[] | undefined>();
   const [typeSelected, setTypeSelected] = useState<SelectOption | undefined>();
+  const [searchValue, setSearchValue] = useState<string>('');
   const [orderBy, setOrderBy] = useState<SelectOption>({
     value: OrderOptions.NAME_ASC,
     label: `order.${OrderOptions.NAME_ASC}`,
@@ -106,6 +109,16 @@ function Home() {
     }
   }, [filteredChampionByType, orderBy.value]);
 
+  const filteredChampionByName = useMemo(
+    () =>
+      orderedChampions && searchValue
+        ? orderedChampions.filter(
+            (champ) => champ.name.toLowerCase().includes(searchValue) || champ.id.toLowerCase().includes(searchValue),
+          )
+        : orderedChampions,
+    [orderedChampions, searchValue],
+  );
+
   return (
     <div>
       {isLoading ? (
@@ -177,12 +190,21 @@ function Home() {
                   hoverStyle='gold'
                 />
               </div>
+
+              <MainInput
+                isSearch
+                name='searchChampion'
+                placeholder={t('home.search')}
+                value={searchValue}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)}
+                onClear={() => setSearchValue('')}
+              />
             </section>
           )}
 
           <ul className='championList'>
-            {orderedChampions &&
-              orderedChampions.map((champion) => (
+            {filteredChampionByName && filteredChampionByName.length > 0 ? (
+              filteredChampionByName.map((champion) => (
                 <Link
                   to={`champion/${version}/${champion.id}`}
                   key={champion.key}
@@ -191,7 +213,13 @@ function Home() {
                 >
                   <ChampionCard champion={champion} />
                 </Link>
-              ))}
+              ))
+            ) : (
+              <div className='noResult'>
+                <img alt='image of a sad poro' src={poro} width={'150px'} />
+                <p>{t('home.noResult')}</p>
+              </div>
+            )}
           </ul>
         </>
       )}
