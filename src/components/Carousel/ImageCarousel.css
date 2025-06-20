@@ -1,0 +1,151 @@
+.carousel {
+  width: 90%;
+  position: relative;
+  margin-left: auto;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+.imageGradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: radial-gradient(circle at 100%, rgba(0, 0, 0, 0) 40%, rgba(9, 20, 40, 1) 95%);
+}
+
+.imageContainer {
+  display: flex;
+  transition: transform 0.7s ease-in-out;
+  height: 100%;
+}
+
+.imageCarousel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.skinsNavContainer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.skinsNavContainer p {
+  font-family: 'BeaufortBoldItalic';
+  font-size: 18px;
+  color: var(--clear-gold-color);
+  margin: 12px;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dotsLine {
+  height: 1px;
+  background-color: var(--dark-gold-color);
+  flex: 1;
+}
+
+.dots {
+  display: flex;
+  gap: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-color);
+  transition: all 0.3s ease;
+}
+
+.dotActive {
+  background-color: var(--gold-color);
+  transform: scale(1.25);
+}
+
+.dotInactive {
+  background-color: transparent;
+}
+
+.dotInactive:hover {
+  transform: scale(1.1);
+}
+
+.thumbnailsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 480px;
+  overflow: hidden;
+  gap: 10px;
+  height: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 90px;
+  height: 55px;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.thumbnailActive {
+  box-shadow: 0 0 4px 2px var(--gold-color);
+  transform: scale(1.2);
+}
+
+.thumbnailInactive {
+  opacity: 0.8;
+}
+
+.thumbnailInactive:hover {
+  opacity: 1;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+}
+
+.navButton {
+  width: 35px;
+  height: 35px;
+  background: no-repeat url('../../assets/icons/ArrowIcon_gold.png');
+  background-size: contain;
+}
+
+.navButtonLeft {
+  transform: rotate(-90deg);
+}
+
+.navButtonRight {
+  transform: rotate(90deg);
+}
+
+.navButton:hover {
+  background: no-repeat url('../../assets/icons/ArrowIcon_light_gold.png');
+  background-size: contain;
+  opacity: 1;
+  filter: drop-shadow(0px 0px 2px var(--gold-color));
+}

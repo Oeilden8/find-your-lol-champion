@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,10 +7,10 @@ import { getOneChampion } from '../../services/dataDragon';
 import { ChampionDetails, ChampionSpell } from '../../types/Champions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
-import loading from '../../assets/icons/loading-buffer.gif';
 import { formatImageUrl, formatPassiveImageUrl, formatSpellImageUrl } from '../../utils/formatter';
 import { goldColor } from '../../utils/colors';
 import { OPGuideUrl, UGGuideUrl } from '../../utils/url';
+import ImageCarousel from '../../components/Carousel/ImageCarousel';
 
 function Champion() {
   const { id, version } = useParams();
@@ -18,7 +18,6 @@ function Champion() {
   const { t } = useTranslation();
 
   const [isChampLoading, setIsChampLoading] = useState<boolean>(true);
-  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const [champion, setChampion] = useState<ChampionDetails | undefined>();
   const [spellSelected, setSpellSelected] = useState<ChampionSpell | undefined>();
 
@@ -47,8 +46,17 @@ function Champion() {
     fetchChampions();
   }, [language, version, id]);
 
+  const skinImages = useMemo(() => {
+    const skins =
+      champion &&
+      champion.skins.map((skin) => {
+        return { name: skin.name, src: formatImageUrl(champion.id, skin.num.toString()) };
+      });
+    return skins;
+  }, [champion]);
+
   return (
-    <div>
+    <main>
       {isChampLoading ? (
         <Loading />
       ) : champion ? (
@@ -59,17 +67,7 @@ function Champion() {
               <h3>{champion.title}</h3>
             </div>
 
-            {!isImageLoaded && <img src={loading} alt='icon indicating loading' width={50} />}
-
-            <div className='championCover'>
-              <img
-                className='championFullImage'
-                alt={`illustration of ${champion.name}`}
-                src={formatImageUrl(champion.id, '0')}
-                onLoad={() => setIsImageLoaded(true)}
-              />
-              <div className='imageGradient'></div>
-            </div>
+            {skinImages && <ImageCarousel images={skinImages} championName={champion.name} />}
           </section>
 
           <section className='championStats'>
@@ -165,7 +163,7 @@ function Champion() {
       ) : (
         <ErrorMessage />
       )}
-    </div>
+    </main>
   );
 }
 

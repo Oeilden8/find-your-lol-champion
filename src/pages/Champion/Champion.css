@@ -22,6 +22,7 @@ h3 {
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  position: relative;
 }
 
 .championNameCard {
@@ -30,30 +31,10 @@ h3 {
   filter: drop-shadow(1px 1px 1px var(--gold-color));
   width: 350px;
   height: 70px;
+  padding: 10px;
   position: absolute;
   z-index: 100;
-  padding: 10px;
   box-sizing: border-box;
-}
-
-.championCover {
-  width: 90%;
-  position: relative;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.championFullImage {
-  width: 100%;
-  margin-bottom: -3px;
-}
-
-.imageGradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background: radial-gradient(circle at 100%, rgba(0, 0, 0, 0) 40%, rgba(9, 20, 40, 1) 95%);
 }
 
 .championStats {
