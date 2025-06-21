@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ImageCarousel.css';
 import loading from '../../assets/icons/loading-buffer.gif';
 
@@ -9,6 +10,7 @@ interface ImageCarouselProps {
 
 const ImageCarousel = (props: ImageCarouselProps) => {
   const images = props.images;
+  const { t } = useTranslation();
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
@@ -61,7 +63,7 @@ const ImageCarousel = (props: ImageCarouselProps) => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={index === currentIndex ? 'dot dotActive' : 'dot dotInactive'}
-                aria-label={`Aller à l'image ${index + 1}`}
+                aria-label={`${t('carousel.dot')} ${index + 1}`}
               />
             ))}
           </div>
@@ -69,7 +71,7 @@ const ImageCarousel = (props: ImageCarouselProps) => {
         </article>
 
         <article className='thumbnailsContainer'>
-          <button onClick={goToPrevious} className='navButton navButtonLeft' aria-label='Image précédente' />
+          <button onClick={goToPrevious} className='navButton navButtonLeft' aria-label={t('carousel.previous')} />
           <div className='thumbnails'>
             {images.map((image, index) => (
               <button
@@ -85,7 +87,7 @@ const ImageCarousel = (props: ImageCarouselProps) => {
             ))}
           </div>
 
-          <button onClick={goToNext} className='navButton navButtonRight' aria-label='Image suivante' />
+          <button onClick={goToNext} className='navButton navButtonRight' aria-label={t('carousel.next')} />
         </article>
       </nav>
     </>

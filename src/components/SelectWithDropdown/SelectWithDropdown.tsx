@@ -50,6 +50,7 @@ function SelectWithDropdown(props: SelectProps) {
     <div style={{ width: props.width }} ref={optionsRef}>
       <button
         type='button'
+        aria-label={t('dropdown')}
         onClick={() => {
           setIsDropdown(!isDropdown);
         }}
@@ -71,6 +72,7 @@ function SelectWithDropdown(props: SelectProps) {
           {props.options.map((option, index) => (
             <button
               type='button'
+              aria-label={t('select') + option.label}
               className='dropdownOption'
               key={index}
               onClick={() => {

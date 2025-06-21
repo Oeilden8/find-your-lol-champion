@@ -141,7 +141,12 @@ function Home() {
                   />
                 </p>
               ))}
-              <button type='button' className='leagueButton' onClick={() => setIsInfoModalOpen(false)}>
+              <button
+                type='button'
+                className='leagueButton'
+                aria-label={t('close')}
+                onClick={() => setIsInfoModalOpen(false)}
+              >
                 {t('close')}
               </button>
             </GeneralModal>
@@ -151,7 +156,12 @@ function Home() {
             <section className='selectContainer'>
               <div className='select'>
                 <p>{t('home.gameStyle')}</p>
-                <button type='button' className='infoButton' onClick={() => setIsInfoModalOpen(true)}>
+                <button
+                  type='button'
+                  className='infoButton'
+                  aria-label={t('home.infoButton')}
+                  onClick={() => setIsInfoModalOpen(true)}
+                >
                   i
                 </button>
                 <SelectWithDropdown
@@ -210,6 +220,7 @@ function Home() {
                   key={champion.key}
                   className='championLink'
                   state={version}
+                  aria-label={t('home.champButton')}
                 >
                   <ChampionCard champion={champion} />
                 </Link>

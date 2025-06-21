@@ -91,6 +91,7 @@ function Champion() {
                   <button
                     key={index}
                     className='spellButton general'
+                    aria-label={spell.name}
                     type='button'
                     onClick={() => setSpellSelected({ ...spell, description: spell.description.replace(/<br>/g, ' ') })}
                     style={spellSelected?.name === spell.name ? { border: `2px solid ${goldColor}` } : undefined}

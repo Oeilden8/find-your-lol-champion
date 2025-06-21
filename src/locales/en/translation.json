@@ -7,12 +7,14 @@
     "search": "Search",
     "noResult": "No result",
     "game": "So, what's your game ?",
+    "infoButton": "See gameplay information",
     "Fighter": "Are you the type of person who just runs into things screaming \"Behellaaaa !\", who puts your brain down and whirls around with your 2 barbarian axes? Then the <span>Fighter</span> type is for you.",
     "Support": "Or are you more of the altruistic and selfless type? If your passion is saving people, and you're not afraid to sacrifice yourself for the survival of your team, you'll be the perfect <span>Support</span>. But don't expect any recognition, it's still League of Legends :D",
     "Mage": "On the contrary, if what you love is playing with fire, cursing your enemies from afar, and watching them die slowly in excruciating agony as you cackle, you're a <span>Mage</span>. But great powers .... comes with great fragility. It's dangerous to go alone !",
     "Tank": "If you're looking to be tough, have more hit points than anyone else, and contain the enemy team all by yourself : play a <span>Tank</span>. You shall not pass!",
     "Marksman": "Attacking from a distance, yes, but magic isn't your thing? Are your weapons of choice a bow or a rifle? You could do some serious damage, but for a <span>Marksman</span> too, it's better to stay close to teammates !",
-    "Assassin": "An <span>Assassin</span> is so quick to strike ... Do you want to have great mobility, jumping around and killing enemies with a single combo? Watching from the shadows, setting a death trap while laughing, hiding in a bush? To catch the poor enemy support who's gone off alone to pick mushrooms in the forest?"
+    "Assassin": "An <span>Assassin</span> is so quick to strike ... Do you want to have great mobility, jumping around and killing enemies with a single combo? Watching from the shadows, setting a death trap while laughing, hiding in a bush? To catch the poor enemy support who's gone off alone to pick mushrooms in the forest?",
+    "champButton": "See information about "
   },
   "champion": {
     "history": "History",
@@ -33,5 +35,14 @@
     "nameAsc": "Name ↑",
     "nameDesc": "Name ↓"
   },
-  "close": "CLOSE"
+  "carousel": {
+    "dot": "Go to image",
+    "previous": "Previous image",
+    "next": "Next image"
+  },
+  "scroll": "Scroll to top",
+  "close": "CLOSE",
+  "clear": "Clear",
+  "dropdown": "Interact with dropdown",
+  "select": "Select"
 }

@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import './MainInput.css';
 import SearchIcon from '../../assets/icons/search.svg?react';
 import CloseIcon from '../../assets/icons/close.svg?react';
@@ -14,6 +15,7 @@ interface MainInputProps {
 }
 
 function MainInput(props: MainInputProps) {
+  const { t } = useTranslation();
   return (
     <section className='inputContainer'>
       {props.isSearch && <SearchIcon fill={goldColor} height='20px' />}
@@ -25,7 +27,7 @@ function MainInput(props: MainInputProps) {
         onChange={props.onChange}
       />
 
-      <button type='button' className='clearButton' onClick={props.onClear}>
+      <button type='button' aria-label={t('clear')} className='clearButton' onClick={props.onClear}>
         <CloseIcon fill={goldColor} height='18px' />
       </button>
     </section>
