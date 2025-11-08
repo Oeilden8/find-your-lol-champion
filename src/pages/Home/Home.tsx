@@ -113,7 +113,9 @@ function Home() {
     () =>
       orderedChampions && searchValue
         ? orderedChampions.filter(
-            (champ) => champ.name.toLowerCase().includes(searchValue) || champ.id.toLowerCase().includes(searchValue),
+            (champ) =>
+              champ.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+              champ.id.toLowerCase().includes(searchValue.toLowerCase()),
           )
         : orderedChampions,
     [orderedChampions, searchValue],

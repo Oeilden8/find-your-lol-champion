@@ -167,7 +167,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .skinsNavContainer p {
     font-size: 14px;
     margin: 10px;
