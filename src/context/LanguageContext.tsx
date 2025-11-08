@@ -5,7 +5,9 @@ type LanguageContextType = {
   setLanguage: (value: string) => void;
 };
 
+const language = navigator.language.length > 3 ? navigator.language.slice(0, 2) : navigator.language;
+
 export const LanguageContext = createContext<LanguageContextType>({
-  language: navigator.language,
+  language: language,
   setLanguage: () => {},
 });

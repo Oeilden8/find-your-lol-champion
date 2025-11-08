@@ -19,7 +19,9 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  const [language, setLanguage] = useState<string>(navigator.language);
+  const [language, setLanguage] = useState<string>(
+    navigator.language.length > 3 ? navigator.language.slice(0, 2) : navigator.language,
+  );
 
   useEffect(() => {
     i18n.changeLanguage(language);
